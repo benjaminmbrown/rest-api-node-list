@@ -16,7 +16,7 @@ var testProduct = {
     colors: "Space Gray, Silver"
 };
 
-
+//posts a single product
 client.post('/product', testProduct, function(err,req,res,product){
 	if(err){
 		console.log('error occurred>>');
@@ -25,5 +25,17 @@ client.post('/product', testProduct, function(err,req,res,product){
 	else{
 		console.log('Saved product >>');
 		console.log(product);
+	}
+})
+
+client.get('/products', function(err,req,res,productds){
+	if(err){
+console.log('error occurred>>');
+		console.log(err);
+	}
+	else{
+		console.log("Total products: " + products.length);
+		console.log("All products >>" );
+		console.log(products);
 	}
 })
