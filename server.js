@@ -6,7 +6,6 @@ var db = mongojs('mongodb://<dbuser>:<dbpassword>@ds031193.mongolab.com:31193/re
 //for use with localdb:
 // var db = mongojs('productsdb', ['products']);
 
-
 var server = restify.createServer();
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
@@ -42,3 +41,5 @@ server.post("/product", function(req,res,next){
 
 	return next();
 });
+
+module.exports = server;
