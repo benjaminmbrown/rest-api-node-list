@@ -15,6 +15,7 @@ var testProduct = {
     sensors: "Accelerometer, gyro, compass",
     colors: "Space Gray, Silver"
 };
+console.log(testProduct);
 
 //posts a single product
 client.post('/product', testProduct, function(err,req,res,product){
@@ -26,16 +27,39 @@ client.post('/product', testProduct, function(err,req,res,product){
 		console.log('Saved product >>');
 		console.log(product);
 	}
-})
+});
 
-client.get('/products', function(err,req,res,productds){
+client.get('/products', function(err,req,res,products){
 	if(err){
-console.log('error occurred>>');
+		console.log('error occurred>>');
 		console.log(err);
 	}
 	else{
 		console.log("Total products: " + products.length);
 		console.log("All products >>" );
 		console.log(products);
+	}
+});
+
+testProduct.price = "1000";
+//put to update existing product
+client.put('/product/'+testProduct.id, testProduct, function(err,req,res,status){
+	if(err){
+		console.log('error occurred>>');
+		console.log(err);
+	}
+	else{
+		console.log('Updated product >>');
+		console.log(status);
+	}
+})
+
+client.del('/product/' + testProduct.id, function(err,req,res,status){
+		if(err){
+		console.log('error occurred>>');
+		console.log(err);
+	} else{
+		console.log("product deleted >>");
+		console.log(status);
 	}
 })
