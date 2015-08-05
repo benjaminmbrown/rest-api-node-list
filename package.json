@@ -1,0 +1,16 @@
+{
+  "name": "rest-api-study",
+  "version": "1.0.0",
+  "description": "Simple REST API ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Benjamin M. Brown <benjaminbb@gmail.com> (http://twitter.com/benjaminmbrown)",
+  "license": "MIT",
+  "devDependencies": {
+    "mongojs": "^1.2.1",
+    "restify": "^3.0.3"
+  }
+}
