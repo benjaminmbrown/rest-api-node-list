@@ -14,14 +14,31 @@ server.use(restify.bodyParser());
 
 server.listen(3000,function(){
 	console.log("Server started on port 3000");
-})
+});
+
 //restify middleware
 server.get("/products", function(req,res,next){
+
 	db.products.find(function(err,products){
 		res.writeHead(200, {
-				'Content-Type': 'application/json; charseet=utf-8'
+				'Content-Type': 'application/json; charset=utf-8'
 			});
 		res.end(JSON.stringify(products));
 	});
+
 	return next();
-})
+});
+
+server.post("/product", function(req,res,next){
+
+	var product = req.params;
+
+	db.products.save(product, function(err,data){
+		res.writeHead(200,{
+			"Content-Type" : 'application/json; charset=utf-8'
+		})
+		res.end(JSON.stringify(data));
+	})
+
+	return next();
+});
